@@ -1,0 +1,17 @@
+{
+  "name": "embersome",
+  "version": "1.0.0",
+  "description": "Embersome — Transparent Creator Growth Agency",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemailer": "^8.0.1"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+data/applications.json
+data/bookings.json
+.env
+*.log
+.DS_Store
+Thumbs.db

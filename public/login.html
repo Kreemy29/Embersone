@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embersome — Admin Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0B0B0D;
+      color: #F4EFE7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* Grain */
+    .grain {
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 200px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      background: #1B1C22;
+      border: 1px solid rgba(184, 115, 51, 0.12);
+      border-radius: 24px;
+      padding: 48px 36px;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(255, 106, 26, 0.05);
+    }
+
+    .login-card__glow {
+      position: absolute; inset: 0; border-radius: 24px;
+      background: radial-gradient(ellipse at center top, rgba(255, 106, 26, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .logo {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 22px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .logo svg { display: inline-block; }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #A7A7AD;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: #6e6e77;
+      margin-bottom: 8px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #F4EFE7;
+      background: #121216;
+      border: 1px solid rgba(184, 115, 51, 0.12);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus {
+      border-color: #B87333;
+      box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.12);
+    }
+    .form-group input::placeholder { color: #6e6e77; }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #FF6A1A, #E5392D);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 2px 16px rgba(255, 106, 26, 0.25);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .btn:hover {
+      box-shadow: 0 4px 28px rgba(255, 106, 26, 0.4);
+      transform: translateY(-1px);
+    }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .error-msg {
+      text-align: center;
+      font-size: 13px;
+      color: #E5392D;
+      margin-top: 16px;
+      min-height: 20px;
+      position: relative;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #6e6e77;
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .back-link:hover { color: #F4EFE7; }
+
+    ::selection { background: rgba(255, 106, 26, 0.3); }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="login-card">
+    <div class="login-card__glow"></div>
+
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 2C16 2 8 10 8 18a8 8 0 0016 0c0-8-8-16-8-16z" fill="url(#eg)" opacity="0.9"/><path d="M16 12c0 0-4 4-4 9a4 4 0 008 0c0-5-4-9-4-9z" fill="#FFC35A" opacity="0.8"/><defs><linearGradient id="eg" x1="16" y1="2" x2="16" y2="26" gradientUnits="userSpaceOnUse"><stop stop-color="#FF6A1A"/><stop offset="1" stop-color="#E5392D"/></linearGradient></defs></svg>
+      <span>Embersome</span>
+    </div>
+    <p class="subtitle">Admin Dashboard</p>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter admin password" autofocus required />
+      </div>
+      <button type="submit" class="btn" id="loginBtn">Sign In</button>
+      <div class="error-msg" id="errorMsg"></div>
+    </form>
+
+    <a href="/" class="back-link">← Back to site</a>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById('loginForm');
+      var errorMsg = document.getElementById('errorMsg');
+      var btn = document.getElementById('loginBtn');
+
+      // If already authenticated, redirect
+      fetch('/api/auth/check')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.authenticated) window.location.href = '/admin';
+        });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorMsg.textContent = '';
+        btn.disabled = true;
+        btn.textContent = 'Signing in...';
+
+        var password = document.getElementById('password').value;
+
+        fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: password }),
+        })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+          .then(function (result) {
+            if (result.data.success) {
+              window.location.href = '/admin';
+            } else {
+              errorMsg.textContent = result.data.error || 'Wrong password';
+              btn.disabled = false;
+              btn.textContent = 'Sign In';
+            }
+          })
+          .catch(function () {
+            errorMsg.textContent = 'Connection error. Try again.';
+            btn.disabled = false;
+            btn.textContent = 'Sign In';
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

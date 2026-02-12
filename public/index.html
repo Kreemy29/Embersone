@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embersome — Transparent Creator Growth Agency</title>
+  <meta name="description" content="Embersome is a transparent growth agency focused on sustainable marketing. No hidden fees, no burnout culture, just honest strategy and steady momentum." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Grain Overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__inner container">
+      <a href="#" class="header__logo" aria-label="Embersome Home">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2C16 2 8 10 8 18a8 8 0 0016 0c0-8-8-16-8-16z" fill="url(#ember-grad)" opacity="0.9"/>
+          <path d="M16 12c0 0-4 4-4 9a4 4 0 008 0c0-5-4-9-4-9z" fill="#FFC35A" opacity="0.8"/>
+          <defs>
+            <linearGradient id="ember-grad" x1="16" y1="2" x2="16" y2="26" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FF6A1A"/>
+              <stop offset="1" stop-color="#E5392D"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Embersome</span>
+      </a>
+      <nav class="header__nav" id="nav" aria-label="Main navigation">
+        <ul class="header__links">
+          <li><a href="#offer" class="nav-link" data-section="offer">What We Offer</a></li>
+          <li><a href="#process" class="nav-link" data-section="process">How It Works</a></li>
+          <li><a href="#transparency" class="nav-link" data-section="transparency">Transparency</a></li>
+          <li><a href="#traction" class="nav-link" data-section="traction">Traction</a></li>
+          <li><a href="#faq" class="nav-link" data-section="faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="btn btn--primary btn--sm header__cta" data-open-modal="applyModal">Apply</a>
+      <button class="header__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul class="mobile-nav__links">
+      <li><a href="#offer" class="nav-link" data-section="offer">What We Offer</a></li>
+      <li><a href="#process" class="nav-link" data-section="process">How It Works</a></li>
+      <li><a href="#transparency" class="nav-link" data-section="transparency">Transparency</a></li>
+      <li><a href="#traction" class="nav-link" data-section="traction">Traction</a></li>
+      <li><a href="#faq" class="nav-link" data-section="faq">FAQ</a></li>
+      <li><a href="#" class="btn btn--primary btn--block" data-open-modal="applyModal">Apply</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="hero__inner container">
+        <div class="hero__content reveal">
+          <h1 class="hero__title">Growth that<br /><em>glows,</em> not burns.</h1>
+          <p class="hero__subtitle">Embersome is a transparent growth agency focused on sustainable marketing. No hidden fees, no burnout culture, just honest strategy and steady momentum.</p>
+          <div class="hero__actions">
+            <a href="#" class="btn btn--primary btn--lg" data-open-modal="applyModal">Apply to work with us</a>
+            <a href="#offer" class="btn btn--outline btn--lg">See what we offer</a>
+          </div>
+          <div class="hero__chips">
+            <div class="chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Ethical promotion
+            </div>
+            <div class="chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Crystal-clear reporting
+            </div>
+            <div class="chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Human-led management
+            </div>
+          </div>
+        </div>
+        <div class="hero__glow" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ========== WHAT WE OFFER ========== -->
+    <section class="section offer" id="offer">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="section__tag">Services</p>
+          <h2 class="section__title">What We Offer</h2>
+          <p class="section__subtitle">Four pillars of sustainable creator growth — each one tailored to you.</p>
+        </div>
+        <div class="offer__grid">
+
+          <!-- Card 1 -->
+          <div class="offer-card reveal" data-delay="0">
+            <button class="offer-card__head" aria-expanded="false">
+              <div class="offer-card__icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+              </div>
+              <div class="offer-card__info">
+                <h3>Account Management</h3>
+                <p>You create. We handle the rest.</p>
+              </div>
+              <span class="offer-card__toggle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="offer-card__body">
+              <p>From inbox triage and scheduling to platform optimization and audience interaction — we take the operational weight off your shoulders so you can focus entirely on creating. Every decision is made transparently, with your input at every step.</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="offer-card reveal" data-delay="1">
+            <button class="offer-card__head" aria-expanded="false">
+              <div class="offer-card__icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              </div>
+              <div class="offer-card__info">
+                <h3>Personalized Consulting</h3>
+                <p>No boilerplate. Roadmap built around you.</p>
+              </div>
+              <span class="offer-card__toggle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="offer-card__body">
+              <p>We study your niche, your audience, and your goals before making a single recommendation. Every strategy session is tailored — no recycled templates, no generic advice. You get a roadmap that actually fits your life and creative process.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="offer-card reveal" data-delay="2">
+            <button class="offer-card__head" aria-expanded="false">
+              <div class="offer-card__icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div class="offer-card__info">
+                <h3>Marketing &amp; Promotion</h3>
+                <p>Ethical, data-backed growth that lasts.</p>
+              </div>
+              <span class="offer-card__toggle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="offer-card__body">
+              <p>Cross-platform campaigns built on real data — not trends that evaporate. We use ethical promotion strategies that grow your audience with people who actually care about your content. No bots, no follow-unfollow, no gimmicks.</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="offer-card reveal" data-delay="3">
+            <button class="offer-card__head" aria-expanded="false">
+              <div class="offer-card__icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div class="offer-card__info">
+                <h3>Financial Transparency</h3>
+                <p>No confusion. No surprises.</p>
+              </div>
+              <span class="offer-card__toggle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="offer-card__body">
+              <p>Every dollar in and out is accounted for. You'll receive clear, itemized reports — no vague "management fees." We believe you deserve full visibility into where your money goes and what it achieves.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="section__tag">Process</p>
+          <h2 class="section__title">How It Works</h2>
+          <p class="section__subtitle">Four clear steps from first conversation to sustained growth.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline__line" aria-hidden="true"></div>
+
+          <div class="timeline__step reveal" data-delay="0">
+            <div class="timeline__marker">
+              <span>01</span>
+            </div>
+            <div class="timeline__content">
+              <h3>Audit</h3>
+              <p>We deep-dive into your current presence — content, audience, revenue streams, pain points. No assumptions, only data.</p>
+            </div>
+          </div>
+
+          <div class="timeline__step reveal" data-delay="1">
+            <div class="timeline__marker">
+              <span>02</span>
+            </div>
+            <div class="timeline__content">
+              <h3>Roadmap</h3>
+              <p>Together, we build a custom strategy aligned with your goals, timeline, and creative rhythm. You approve every step before it happens.</p>
+            </div>
+          </div>
+
+          <div class="timeline__step reveal" data-delay="2">
+            <div class="timeline__marker">
+              <span>03</span>
+            </div>
+            <div class="timeline__content">
+              <h3>Execution</h3>
+              <p>We roll out the plan across platforms with full transparency. Weekly check-ins, real-time reporting, zero guesswork.</p>
+            </div>
+          </div>
+
+          <div class="timeline__step reveal" data-delay="3">
+            <div class="timeline__marker">
+              <span>04</span>
+            </div>
+            <div class="timeline__content">
+              <h3>Scale</h3>
+              <p>As momentum builds, we refine, optimize, and expand. Sustainable growth — compounding, not collapsing.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TRANSPARENCY ========== -->
+    <section class="section transparency" id="transparency">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="section__tag">Our Promise</p>
+          <h2 class="section__title">Radical Transparency</h2>
+          <p class="section__subtitle">Three pillars we'll never compromise on.</p>
+        </div>
+        <div class="pillars">
+
+          <div class="pillar reveal" data-delay="0">
+            <div class="pillar__badge">Principle #1</div>
+            <div class="pillar__icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <h3>No Hidden Fees</h3>
+            <p>Flat, predictable pricing. Itemized reports. You see every dollar — where it went and what it did. If it doesn't add value, we don't charge for it.</p>
+          </div>
+
+          <div class="pillar reveal" data-delay="1">
+            <div class="pillar__badge">Principle #2</div>
+            <div class="pillar__icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>No Burnout Culture</h3>
+            <p>We pace growth to match your energy. Sustainable schedules, realistic expectations, and a team that respects your boundaries as a creator and a person.</p>
+          </div>
+
+          <div class="pillar reveal" data-delay="2">
+            <div class="pillar__badge">Principle #3</div>
+            <div class="pillar__icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>No Bots or Gimmicks</h3>
+            <p>Every follower is real. Every metric is earned. We build audiences that engage, convert, and stick around — because they genuinely care about your work.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TRACTION ========== -->
+    <section class="section traction" id="traction">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="section__tag">Traction</p>
+          <h2 class="section__title">Real Numbers, Real Traffic</h2>
+          <p class="section__subtitle">Our current visitor data — no inflated metrics, just what the analytics show.</p>
+        </div>
+
+        <div class="traction__grid">
+          <!-- Total -->
+          <div class="traction-stat reveal" data-delay="0">
+            <div class="traction-stat__value">6,492</div>
+            <div class="traction-stat__label">Total Visits</div>
+            <div class="traction-stat__period">Feb 3 – Feb 10</div>
+          </div>
+
+          <!-- Reddit -->
+          <div class="traction-stat reveal" data-delay="1">
+            <div class="traction-stat__bar">
+              <div class="traction-stat__fill traction-stat__fill--reddit" style="width:53%"></div>
+            </div>
+            <div class="traction-stat__value">3,419</div>
+            <div class="traction-stat__label">Reddit (Link)</div>
+            <div class="traction-stat__pct">53% of traffic</div>
+          </div>
+
+          <!-- Instagram -->
+          <div class="traction-stat reveal" data-delay="2">
+            <div class="traction-stat__bar">
+              <div class="traction-stat__fill traction-stat__fill--ig" style="width:47%"></div>
+            </div>
+            <div class="traction-stat__value">3,066</div>
+            <div class="traction-stat__label">Instagram</div>
+            <div class="traction-stat__pct">47% of traffic</div>
+          </div>
+        </div>
+
+        <p class="traction__note reveal">Reddit traffic appears under "Link" because Reddit strips referrer data. These are real analytics from our link tracking — not projections.</p>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="section faq" id="faq">
+      <div class="container container--narrow">
+        <div class="section__header reveal">
+          <p class="section__tag">Questions</p>
+          <h2 class="section__title">Frequently Asked</h2>
+        </div>
+        <div class="faq__list">
+
+          <div class="faq-item reveal" data-delay="0">
+            <button class="faq-item__question" aria-expanded="false">
+              How much does it cost?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Pricing depends on the scope of services. We offer flat-rate packages with no hidden fees — you'll know exactly what you're paying for before we start. Book a call and we'll walk you through options that fit your budget.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" data-delay="1">
+            <button class="faq-item__question" aria-expanded="false">
+              Do you work with small creators?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Absolutely. We work with creators at every stage — from 1K to 500K+ followers. What matters to us isn't size, it's alignment. If you're serious about growth and value transparency, we're a good fit.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" data-delay="2">
+            <button class="faq-item__question" aria-expanded="false">
+              What platforms do you support?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>We support YouTube, TikTok, Instagram, Twitter/X, Twitch, and emerging platforms. Our strategies are cross-platform by default — we go where your audience is.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" data-delay="3">
+            <button class="faq-item__question" aria-expanded="false">
+              How long until I see results?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Most creators begin seeing measurable improvements within 4–8 weeks. Sustainable growth takes time — we'll never promise overnight results, but we will show you consistent progress with data to back it up.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" data-delay="4">
+            <button class="faq-item__question" aria-expanded="false">
+              Can I cancel anytime?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Yes. We don't lock you into long-term contracts. We earn your commitment by delivering results, not by trapping you in fine print. You're free to walk away at any time.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" data-delay="5">
+            <button class="faq-item__question" aria-expanded="false">
+              Do you use bots or paid followers?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Never. Every follower and engagement metric is organic and earned. We believe fake growth is worse than no growth. Our methods are 100% ethical and platform-compliant.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="section cta-final" id="apply">
+      <div class="container container--narrow">
+        <div class="cta-final__inner reveal">
+          <div class="cta-final__glow" aria-hidden="true"></div>
+          <p class="section__tag">Ready?</p>
+          <h2 class="cta-final__title">Let's build something<br /><em>that lasts.</em></h2>
+          <p class="cta-final__text">No pressure. No commitment upfront. Just an honest conversation about where you are and where you want to go.</p>
+          <div class="cta-final__actions">
+            <a href="#" class="btn btn--primary btn--lg" data-open-modal="applyModal">Apply Now</a>
+            <a href="#" class="btn btn--ghost btn--lg" data-open-modal="bookModal">Book a Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <a href="#" class="header__logo" aria-label="Embersome Home">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 2C16 2 8 10 8 18a8 8 0 0016 0c0-8-8-16-8-16z" fill="url(#ember-grad2)" opacity="0.9"/>
+            <path d="M16 12c0 0-4 4-4 9a4 4 0 008 0c0-5-4-9-4-9z" fill="#FFC35A" opacity="0.8"/>
+            <defs>
+              <linearGradient id="ember-grad2" x1="16" y1="2" x2="16" y2="26" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF6A1A"/>
+                <stop offset="1" stop-color="#E5392D"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>Embersome</span>
+        </a>
+        <p>&copy; 2026 Embersome. All rights reserved.</p>
+      </div>
+      <div class="footer__links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="mailto:membersomeagency@gmail.com">membersomeagency@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== APPLY MODAL ========== -->
+  <div class="modal" id="applyModal" aria-hidden="true" role="dialog" aria-labelledby="applyModalTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h3 id="applyModalTitle">Apply to Work With Us</h3>
+        <button class="modal__close" data-close-modal aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <form id="applyForm" class="modal__form" novalidate>
+        <div class="form-group">
+          <label for="apply-name">Your name *</label>
+          <input type="text" id="apply-name" name="name" required placeholder="e.g. Jordan Mitchell" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="apply-email">Email address *</label>
+          <input type="email" id="apply-email" name="email" required placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="apply-platforms">Primary platforms</label>
+          <input type="text" id="apply-platforms" name="platforms" placeholder="e.g. YouTube, TikTok, Instagram" />
+        </div>
+        <div class="form-group">
+          <label for="apply-audience">Current audience size</label>
+          <input type="text" id="apply-audience" name="audience" placeholder="e.g. 15K followers" />
+        </div>
+        <div class="form-group">
+          <label for="apply-message">Tell us a bit about your goals</label>
+          <textarea id="apply-message" name="message" rows="4" placeholder="What are you hoping to achieve?"></textarea>
+        </div>
+        <div class="form-feedback" id="applyFeedback"></div>
+        <button type="submit" class="btn btn--primary btn--block btn--lg">
+          <span class="btn__text">Submit Application</span>
+          <span class="btn__loader" aria-hidden="true"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== BOOK A CALL MODAL ========== -->
+  <div class="modal" id="bookModal" aria-hidden="true" role="dialog" aria-labelledby="bookModalTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h3 id="bookModalTitle">Book a Call</h3>
+        <button class="modal__close" data-close-modal aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <form id="bookForm" class="modal__form" novalidate>
+        <div class="form-group">
+          <label for="book-name">Your name *</label>
+          <input type="text" id="book-name" name="name" required placeholder="e.g. Jordan Mitchell" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="book-email">Email address *</label>
+          <input type="email" id="book-email" name="email" required placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="book-time">Preferred time</label>
+          <input type="text" id="book-time" name="preferredTime" placeholder="e.g. Weekdays after 3PM EST" />
+        </div>
+        <div class="form-group">
+          <label for="book-topic">What would you like to discuss?</label>
+          <textarea id="book-topic" name="topic" rows="3" placeholder="Brief overview of what you'd like to talk about"></textarea>
+        </div>
+        <div class="form-feedback" id="bookFeedback"></div>
+        <button type="submit" class="btn btn--primary btn--block btn--lg">
+          <span class="btn__text">Request a Call</span>
+          <span class="btn__loader" aria-hidden="true"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
