@@ -15,6 +15,13 @@
   var offerCards = document.querySelectorAll('.offer-card__head');
   var faqItems = document.querySelectorAll('.faq-item__question');
 
+  // Safety — if critical elements are missing, show all content and bail
+  if (!header || !burger || !mobileNav) {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+    console.warn('Embersome: missing DOM elements, animations disabled');
+    return;
+  }
+
   // ---- Header Scroll State ----
   function updateHeaderScroll() {
     if (window.scrollY > 20) {

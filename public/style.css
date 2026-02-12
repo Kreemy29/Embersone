@@ -1095,6 +1095,20 @@ ul, ol { list-style: none; }
   transform: translateY(0);
 }
 
+/* Hero always visible — never hidden behind JS */
+.hero .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fallback: if JS fails, show everything after 2s */
+@keyframes reveal-fallback {
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  animation: reveal-fallback 0s 2s forwards;
+}
+
 /* Staggered delays */
 .reveal[data-delay="1"] { transition-delay: 80ms; }
 .reveal[data-delay="2"] { transition-delay: 160ms; }
