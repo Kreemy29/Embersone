@@ -268,6 +268,33 @@ ul, ol { list-style: none; }
   display: inline-block;
 }
 
+/* Logo flame animation */
+.logo-flame {
+  transform-origin: center center;
+}
+.logo-flame__fire {
+  transform-origin: 16px 26px;
+  animation: flame-flicker 2.5s ease-in-out infinite;
+}
+@keyframes flame-flicker {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.04) scaleY(1.06);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(0.98) scaleY(0.97);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.02) scaleY(1.03);
+    opacity: 0.98;
+  }
+}
+
 .header__nav {
   display: none;
 }
