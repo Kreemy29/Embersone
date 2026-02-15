@@ -30,41 +30,53 @@ if (!fs.existsSync(DATA_DIR)) {
 
 // ---- Email Setup ----
 let transporter = null;
-const SMTP_CONFIGURED = process.env.SMTP_PASS && process.env.SMTP_PASS !== 'YOUR_APP_PASSWORD_HERE';
+let emailError = null;
+const SMTP_USER = process.env.SMTP_USER || '';
+const SMTP_PASS = (process.env.SMTP_PASS || '').trim().replace(/\s/g, '');
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || SMTP_USER;
+const SMTP_CONFIGURED = SMTP_USER && SMTP_PASS && SMTP_PASS !== 'YOUR_APP_PASSWORD_HERE';
 
 if (SMTP_CONFIGURED) {
   transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT || '587'),
+    port: parseInt(process.env.SMTP_PORT || '587', 10),
     secure: false,
+    requireTLS: true,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: SMTP_USER,
+      pass: SMTP_PASS,
     },
   });
-  // Verify connection
   transporter.verify().then(() => {
     console.log('  ✉  Email configured and ready');
+    emailError = null;
   }).catch(err => {
-    console.log('  ⚠  Email config error:', err.message);
+    emailError = err.message || String(err);
+    console.error('  ✉  Email verify failed:', emailError);
+    if (err.response) console.error('  ✉  Gmail response:', err.response);
     transporter = null;
   });
 } else {
-  console.log('  ⚠  Email not configured — set SMTP_PASS in .env (see instructions inside)');
+  console.log('  ⚠  Email not configured — set SMTP_USER and SMTP_PASS (use Gmail App Password)');
 }
 
 async function sendNotification(subject, htmlBody) {
-  if (!transporter) return;
+  if (!transporter) {
+    console.warn('  ✉  Skipped (no transporter):', subject);
+    return;
+  }
   try {
     await transporter.sendMail({
-      from: `"Embersome" <${process.env.SMTP_USER}>`,
-      to: process.env.NOTIFY_EMAIL || process.env.SMTP_USER,
+      from: `"Embersome" <${SMTP_USER}>`,
+      to: NOTIFY_EMAIL,
       subject,
       html: htmlBody,
     });
-    console.log(`  ✉  Notification sent: ${subject}`);
+    console.log('  ✉  Notification sent:', subject);
   } catch (err) {
-    console.error('  ✉  Failed to send email:', err.message);
+    const msg = err.response ? `${err.message} | ${err.response}` : err.message;
+    console.error('  ✉  Failed to send notification:', msg);
+    if (err.responseCode) console.error('  ✉  Code:', err.responseCode);
   }
 }
 
@@ -72,13 +84,15 @@ async function sendConfirmation(toEmail, toName, subject, htmlBody) {
   if (!transporter) return;
   try {
     await transporter.sendMail({
-      from: `"Embersome" <${process.env.SMTP_USER}>`,
+      from: `"Embersome" <${SMTP_USER}>`,
       to: toEmail,
       subject,
       html: htmlBody,
     });
+    console.log('  ✉  Confirmation sent to:', toEmail);
   } catch (err) {
-    console.error('  ✉  Failed to send confirmation:', err.message);
+    const msg = err.response ? `${err.message} | ${err.response}` : err.message;
+    console.error('  ✉  Failed to send confirmation to', toEmail, ':', msg);
   }
 }
 
@@ -378,6 +392,34 @@ app.delete('/api/admin/bookings/:id', (req, res) => {
   books = books.filter(b => b.id !== req.params.id);
   fs.writeFileSync(filePath, JSON.stringify(books, null, 2), 'utf-8');
   res.json({ success: true });
+});
+
+// GET /api/admin/email-test — Send a test email and return success or error (for debugging)
+app.get('/api/admin/email-test', async (req, res) => {
+  if (!SMTP_CONFIGURED) {
+    return res.json({
+      ok: false,
+      message: 'SMTP not configured. Set SMTP_USER and SMTP_PASS (Gmail App Password) in Environment.',
+    });
+  }
+  if (!transporter) {
+    return res.json({
+      ok: false,
+      message: emailError ? `Connection failed: ${emailError}` : 'Transporter not ready yet. Wait a few seconds and try again.',
+    });
+  }
+  try {
+    await transporter.sendMail({
+      from: `"Embersome" <${SMTP_USER}>`,
+      to: NOTIFY_EMAIL,
+      subject: 'Embersome email test',
+      html: '<p>If you got this, email is working.</p>',
+    });
+    res.json({ ok: true, message: `Test email sent to ${NOTIFY_EMAIL}` });
+  } catch (err) {
+    const msg = err.response ? `${err.message} — ${err.response}` : err.message;
+    res.status(500).json({ ok: false, message: msg });
+  }
 });
 
 // ---- Catch-all ----
